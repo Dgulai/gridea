@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>在循环中使用异步操作async/await | Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dgulai.github.io/gridea//favicon.ico?v=1593685340244">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dgulai.github.io/gridea//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://dgulai.github.io/gridea/">
+        <img class="avatar" src="https://dgulai.github.io/gridea//images/avatar.png?v=1593685340244" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://dgulai.github.io/gridea/">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://dgulai.github.io/gridea//post-images/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait.jpg')">
+            </div>
+          
+          <h2 class="post-title">在循环中使用异步操作async/await</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-05-04</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://dgulai.github.io/gridea/tag/YiZQTe1hl/">
+                    循环
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://dgulai.github.io/gridea/tag/0mzyJWmj1S/">
+                    异步
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://dgulai.github.io/gridea/tag/hjr55A_imh/">
+                    async/await
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>##1. 带回调的循环一般无法处理Promise async/await<br>
+##2. 如果想要在循环内依次执行异步操作，必须使用for, for of,  while 等循环<br>
+##3. async/await对 forEach map filter reduce的影响<br>
+1. forEach 中不支持感知Promise和async/await 所以不能使用<br>
+2. map 返回的数组中为promise ，最终的值才是promise返回的值<br>
+3. filter 不产生作用 返回的值为promise的话则一直为真，因此所有项目都通过filter<br>
+在filter中正确使用await:<br>
+1. 使用map返回一个promise数组<br>
+2. 使用await等待处理结果<br>
+3. 使用filter<br>
+const promise = await xxx.map(...);<br>
+const result = Promise.all(promise);<br>
+filter ......<br>
+4. reduce 使用await会异常混乱，且相对复杂 不建议使用😣</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/hello-gridea/">
+              <h3 class="post-title">
+                下一篇：Hello Gridea
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dgulai.github.io/gridea//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
