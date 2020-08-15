@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Hello Gridea | Gridea</title>
+<title>从零学Java-02 数据类型 | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,51 +80,101 @@
       <div class="content-container">
         <div class="post-detail">
           
-            <div class="feature-container" style="background-image: url('https://dgulai.github.io/gridea//post-images/hello-gridea.png')">
-            </div>
-          
-          <h2 class="post-title">Hello Gridea</h2>
+          <h2 class="post-title">从零学Java-02 数据类型</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2018-12-12</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://dgulai.github.io/gridea/tag/E3Ogs8ooJ/">
-                    Gridea
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2020-08-15</span>
             
           </div>
           <div class="post-content">
-            <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+            <h3 id="强类型语言">强类型语言</h3>
+<p>要求变量的使用要严格符合规定，所有变量都必须限定以后才能使用</p>
+<h3 id="弱类型语言">弱类型语言</h3>
+<h3 id="java的数据类型分为两大类">Java的数据类型分为两大类</h3>
+<ul>
+<li>
+<p>基本类型(primitive type)</p>
+<ol>
+<li>byte 占1字节范围: -128 - 127</li>
+<li>short 占2个字节范围: -32768 - 32767</li>
+<li>int 占4个字节范围: ...</li>
+<li>long 占8个字节范围: ...</li>
+<li>float 占4个字节</li>
+<li>double 占8个字节</li>
+<li>char 占2个字节</li>
+<li>boolean 占1个位 只有 true和false</li>
+</ol>
+</li>
+<li>
+<p>引用类型(reference type)</p>
+<ol>
+<li>类</li>
+<li>接口</li>
+<li>数组</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据类型扩展">数据类型扩展</h3>
+<ul>
+<li>整数拓展<br>
+进制 二进制(0b) 八进制(0) 十六进制(0x)</li>
+<li>浮点数拓展<br>
+银行业务表示:</li>
+</ul>
+<pre><code class="language-java">float f = 0.1f; //0.1
+double d = 1.0/10; //0.1
+System.out.println(f==d); // false
+float d1 = 32320432492f;
+float d2 = d1+1;
+System.out.println(d1==d2); // true
+</code></pre>
+<p>float 有限 离散 舍入误差  大约 接近但不等于<br>
+<strong>最好完全使用避免使用浮点数进行比较（数学工具类BigDecimal）</strong></p>
+<ul>
+<li>字符拓展<br>
+字符的本质还是数字 表示成 Unicode</li>
+</ul>
+<h3 id="类型转换">类型转换</h3>
+<ul>
+<li>由于Java是强类型的语言，所以要进行有些运算的时候，需要用到类型转换<br>
+由低到高： byte, short, char -&gt; int -&gt; long -&gt; float -&gt; double</li>
+<li>运算中，不同类型的数据优先转化为同一类型，再进行运算</li>
+<li>强制类型转换(高-&gt;低)</li>
+</ul>
+<pre><code class="language-java">int i = 100;
+byte b = (byte)i;
+</code></pre>
+<ul>
+<li>自动类型转换(低-&gt;高)</li>
+</ul>
+<pre><code class="language-java">int i = 100;
+double b = i;
+</code></pre>
+<h5 id="注意点">注意点</h5>
+<ul>
+<li>不能对布尔值进行转换</li>
+<li>不能把对象类型转换为不相干的类型</li>
+<li>在把高容量转换到低容量的时候，强制转换</li>
+<li>转换的时候可能存在内存溢出，或精度问题</li>
+</ul>
+<pre><code class="language-java">// 操作比较大的数的时候注意溢出问题（解决：先把一个数转换为long）
+// jdk7新特性，数字之间可以用下划线分割
+int money = 10_0000_0000;
+int years = 20;
+long total = money*((long)years);
+</code></pre>
 
           </div>
         </div>
 
         
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/cong-ling-xue-java-01-zhu-shi-biao-shi-fu-guan-jian-zi/">
+              <h3 class="post-title">
+                下一篇：从零学Java-01 注释，标识符，关键字
+              </h3>
+            </a>
+          </div>
+          
       </div>
 
       

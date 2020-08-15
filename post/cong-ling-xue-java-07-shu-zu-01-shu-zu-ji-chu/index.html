@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>异步 | Gridea</title>
+<title>从零学Java-07 数组01数组基础 | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -78,67 +78,70 @@
 
 
       <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">从零学Java-07 数组01数组基础</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-08-15</span>
+            
+          </div>
+          <div class="post-content">
+            <h3 id="数组的定义">数组的定义</h3>
+<ul>
+<li>数组是相同类型数据的有序集合</li>
+<li>数组描述的是相同类型的若干个数据，按照一定的先后次序排列组合而成</li>
+<li>其中，每一个数据称作数组元素，每个数组元素可以通过一个下标来访问它们</li>
+</ul>
+<h3 id="数组声明创建">数组声明创建</h3>
+<ul>
+<li>首先必须声明数组变量，才能在程序中使用数组。如下:<pre><code class="language-java">dataType[] arrayRefVar;     // 首选方法
+dataType arrayRefVar[];     // 效果相同，不是首选
+</code></pre>
+</li>
+<li>Java语言使用new操作符来创建数组<pre><code class="language-java">// 动态初始化: 包含默认初始化（所有项分配默认值 0）
+dataType[] arrayRefVar = new dataType[arraySize]; //arraySize 给数组分配空间
+// 静态初始化
+int[] a = {1,2,3,4,5,6};    // 初始化后数组长度已定
+</code></pre>
+</li>
+<li>数组的元素是通过索引访问的，数组索引从0开始</li>
+<li>获取数组长度: <code>arrays.length</code></li>
+</ul>
+<h3 id="数组的四个基本特点">数组的四个基本特点</h3>
+<ul>
+<li>其长度是确定的。数组 一旦被创建，它的大小就是不可以改变的。</li>
+<li>其元素必须是相同类型，不允许出现混合类型</li>
+<li>数组的元素可以是任何数据类型，包括基本类型和引用类型</li>
+<li>数组变量属于引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量。</li>
+<li>数组本身就是对象，java中对象是在堆中的，因此数组无论保存原始类型还是其他对象类型，数组对象本身是在堆中的</li>
+</ul>
+<h3 id="数组边界">数组边界</h3>
+<ul>
+<li>下标的合法区域: [ 0, length-1 ],如果越界就会报错</li>
+<li><strong>ArrayIndexOutOfBoundsException:  数组下标越界异常!</strong></li>
+</ul>
+<h3 id="小结">小结</h3>
+<ul>
+<li>数组是相同数据类型( 数据类型可以为任意类型 )的有序集合</li>
+<li>数组也是对象。数组元素相当于对象的成员变量</li>
+<li>数组长度是确定的，不可变的。如果越界，则报: <strong>ArrayIndexOutOfBoundsException</strong></li>
+</ul>
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> 异步
-          </h2> 
+          </div>
         </div>
 
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://dgulai.github.io/gridea/post/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait/">
-        <h2 class="post-title">在循环中使用异步操作async/await</h2>
-      </a>
-      <div class="post-abstract">
-        
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/cong-ling-xue-java-06-java-de-fang-fa-can-shu/">
+              <h3 class="post-title">
+                下一篇：从零学Java-06 java的方法、参数
+              </h3>
+            </a>
+          </div>
+          
       </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-05-04</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://dgulai.github.io/gridea/tag/YiZQTe1hl/">
-                循环
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://dgulai.github.io/gridea/tag/0mzyJWmj1S/">
-                异步
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://dgulai.github.io/gridea/tag/hjr55A_imh/">
-                async/await
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-      <a href="https://dgulai.github.io/gridea/post/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait/">
-        <div class="feature-container" style="background-image: url('https://dgulai.github.io/gridea//post-images/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait.jpg')">
-        </div>
-      </a>
-    
-  </section>
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan">温故而知新</div>

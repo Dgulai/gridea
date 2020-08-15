@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>异步 | Gridea</title>
+<title>从零学Java-03 变量 常量 作用域 | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -78,67 +78,76 @@
 
 
       <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">从零学Java-03 变量 常量 作用域</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-08-15</span>
+            
+          </div>
+          <div class="post-content">
+            <h3 id="变量">变量</h3>
+<ul>
+<li>变量就是可变化的量</li>
+<li>Java是一种强类型语言，每个变量都必须声明其类型</li>
+<li>Java变量时程序中最基本的存储单元，其要输包括变量名，变量类型和作用域</li>
+</ul>
+<pre><code class="language-java">type varName [=value] [{,varName[=value]}]
+// 数据类型 变量名 = 值； 可用逗号隔开声明多个同类型变量
+</code></pre>
+<ul>
+<li>注意事项
+<ol>
+<li>每个变量都有类型，类型可以是基本类型，引用类型</li>
+<li>变量名必须是合法的标识符</li>
+<li>变量声明是一条完整的语句，因此每一个声明都必须以分号结束</li>
+</ol>
+</li>
+</ul>
+<h3 id="变量作用域">变量作用域</h3>
+<ul>
+<li>类变量</li>
+<li>实例变量</li>
+<li>局部变量</li>
+</ul>
+<pre><code class="language-java">public class Variable{
+    static int allClicks = 0; // 类变量( static )
+    String str = &quot;hello&quot;;   // 实例变量 没有初始化会有默认值  false/0/null ..
+    public void method(){
+        int i = 0; // 局部变量（必须声明和初始化）
+    }
+}
+</code></pre>
+<h3 id="常量">常量</h3>
+<ul>
+<li>初始化后不能再改变 (final 定义)</li>
+<li>常量名一般使用大写</li>
+</ul>
+<h3 id="变量的命名规范">变量的命名规范</h3>
+<ul>
+<li>所有变量 方法 类名： 见名知意</li>
+<li>类成员变量： 首字母小写和驼峰原则</li>
+<li>局部变量： 首字母小写和驼峰原则</li>
+<li>常量： 大写字母和下划线分割字母</li>
+<li>类名： 首字母大写和驼峰原则</li>
+<li>方法名： 首字母小写和驼峰原则</li>
+</ul>
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> 异步
-          </h2> 
+          </div>
         </div>
 
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://dgulai.github.io/gridea/post/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait/">
-        <h2 class="post-title">在循环中使用异步操作async/await</h2>
-      </a>
-      <div class="post-abstract">
-        
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/cong-ling-xue-java-02-shu-ju-lei-xing/">
+              <h3 class="post-title">
+                下一篇：从零学Java-02 数据类型
+              </h3>
+            </a>
+          </div>
+          
       </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-05-04</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://dgulai.github.io/gridea/tag/YiZQTe1hl/">
-                循环
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://dgulai.github.io/gridea/tag/0mzyJWmj1S/">
-                异步
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://dgulai.github.io/gridea/tag/hjr55A_imh/">
-                async/await
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-      <a href="https://dgulai.github.io/gridea/post/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait/">
-        <div class="feature-container" style="background-image: url('https://dgulai.github.io/gridea//post-images/zai-xun-huan-zhong-shi-yong-yi-bu-cao-zuo-asyncawait.jpg')">
-        </div>
-      </a>
-    
-  </section>
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan">温故而知新</div>

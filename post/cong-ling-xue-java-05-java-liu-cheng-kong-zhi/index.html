@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>从零学Java-05 java流程控制 | Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dgulai.github.io/gridea//favicon.ico?v=1597495156452">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dgulai.github.io/gridea//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://dgulai.github.io/gridea/">
+        <img class="avatar" src="https://dgulai.github.io/gridea//images/avatar.png?v=1597495156452" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://dgulai.github.io/gridea/">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">从零学Java-05 java流程控制</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-08-15</span>
+            
+          </div>
+          <div class="post-content">
+            <h3 id="用户交互-scanner">用户交互 Scanner</h3>
+<ul>
+<li>java.util.Scanner 是java5的性特征，可以通过Scanner类来获取用户输入</li>
+<li>基本用法</li>
+</ul>
+<pre><code class="language-java">Scanner s = new Scanner(System.in);
+</code></pre>
+<ul>
+<li>通过Scanner的 next() (遇到空格结束) 和 nextLine() (enter为结束)方法获取输入的字符串，读取前一般先使用 hasNext() 或 hasNextLine()判断是否还有输入的数据</li>
+</ul>
+<h3 id="顺序结构">顺序结构</h3>
+<ul>
+<li>Java的基本结构就是顺序结构，除非特别指明，否则就按照顺序执行</li>
+<li>顺序结构是最简单的算法结构</li>
+<li>语句与语句之间，框与框之间是按从上到下的顺序进行的，它是由若尬歌依次执行的处理步骤组成，<strong>它是任何一个算法都离不开的一种基本算法结构</strong></li>
+</ul>
+<h3 id="选择结构">选择结构</h3>
+<ul>
+<li>if 单选择结构</li>
+<li>if 双选择结构 (else if)</li>
+<li>if 多选择结构 (else if ...)</li>
+<li>嵌套的 if 结构</li>
+<li>switch 多选择结构<br>
+switch 语句中的变量类型可以使: byte short int char<br>
+<strong>从 Java SE7 开始 switch 支持字符串 string 类型</strong></li>
+</ul>
+<h3 id="循环结构">循环结构</h3>
+<ul>
+<li>while 循环<br>
+while为最基本的循环 <code>while(布尔表达式){}</code> 只要布尔表达式成立则一直循环(先判断再自行)</li>
+<li>do...while 循环 <code>do{}while(布尔表达式)</code> 先执行一次再判断</li>
+<li>for 循环
+<ul>
+<li>for 循环，使一些循环结构变得更简单</li>
+<li>for 循环语句是支持迭代的一种通用结构，是最有效，最灵活的循环结构</li>
+<li>for 循环执行的次数是在执行前就确定的 <code>for(初始化;布尔表达式;迭代){}</code><br>
+<strong>在Java5中引入了一种主要用于数组的增强for循环</strong></li>
+</ul>
+</li>
+<li>增强for循环</li>
+</ul>
+<pre><code class="language-java">int[] numbers = { 1,2,3,4,5};
+for (int number : numbers) {
+    ...
+}
+</code></pre>
+<h3 id="break-continue">break continue</h3>
+<ul>
+<li>break在任何循环体的主体部分，均可用break控制循环的流程，主要用于 <strong>退出循环</strong>，不再执行剩余的循环及语句(switch中类似)</li>
+<li>continue 语句用在循环语句体重，用于终止某一次循环过程，执行下一次循环</li>
+<li>关于goto关键字
+<ol>
+<li>goto关键字很早在程序涉及语言中出现， 尽管goto仍然是java的一个保留字，但并未在语言中的到正式使用；java没有goto。然而，在break和continue这两个关键字身上，仍然能看出一些goto的影子 -- 带标签的break和continue</li>
+<li>标签 是指后面跟一个冒号的标识符 例如: lable:</li>
+<li>对java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方</li>
+</ol>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/cong-ling-xue-java-04-yun-suan-fu-bao-ji-zhi/">
+              <h3 class="post-title">
+                下一篇：从零学Java-04 运算符 包机制
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dgulai.github.io/gridea//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

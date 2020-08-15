@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Axios | Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dgulai.github.io/gridea//favicon.ico?v=1597495156452">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dgulai.github.io/gridea//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://dgulai.github.io/gridea/">
+        <img class="avatar" src="https://dgulai.github.io/gridea//images/avatar.png?v=1597495156452" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://dgulai.github.io/gridea/">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Axios</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-07-09</span>
+            
+          </div>
+          <div class="post-content">
+            <p>vue中axios实现二进制流文件下载</p>
+<p>后端传过来的是一个二进制流方式的docx文件</p>
+<p>之前试了下网上常见的思路,  这类方法思路如下:</p>
+<ol>
+<li>
+<p>使用js在页面常见a标签</p>
+</li>
+<li>
+<p>创建Blob对象, 在Blob中传入后端返回的response.data</p>
+</li>
+</ol>
+<p>这一步中Blob需要的是一个数组类型的参数, 后端二进制流这边接收到的response.data使用查看发现是String, 所以我把response.data放进一个长度1的数组, 再传入Blob对象,</p>
+<p>此外需要规定文件类型, 可以是doc的(这里传的word文档)application/vnd.openxmlformats-officedocument.wordprocessingml.document, 也可以是二进制流的application/actet-stream</p>
+<ol start="3">
+<li>
+<p>创建下载链接 window.URL.createObjectURLblob()</p>
+</li>
+<li>
+<p>把3创建的链接变量赋值个a标签的href属性(这类用法详见a标签文档)</p>
+</li>
+<li>
+<p>使用document.body.appendChild把a标签挂上去, 再调用a标签的.click()事件</p>
+</li>
+</ol>
+<p>6. document.body.removeChild(a标签) 移除a标签</p>
+<p>7.window.URL.revokeObjectUR()下载链接)释放blob对象</p>
+<p>代码如下:</p>
+<p>download(){<br>
+this.$http({<br>
+method:&quot;get&quot;,<br>
+url:接口地址+&quot;?data=&quot;+encodeURI(JSON.stringify(this.value)),<br>
+responseType:'blob'<br>
+}).then((res)=&gt;{<br>
+//这里res.data是返回的blob对象<br>
+var blob = new Blob([res.data], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document;charset=utf-8'}); //application/vnd.openxmlformats-officedocument.wordprocessingml.document这里表示doc类型<br>
+var contentDisposition = res.headers['content-disposition'];  //从response的headers中获取filename, 后端response.setHeader(&quot;Content-disposition&quot;, &quot;attachment; filename=xxxx.docx&quot;) 设置的文件名;<br>
+var patt = new RegExp(&quot;filename=([<sup>;]+\.[</sup>\.;]+);*&quot;);<br>
+var result = patt.exec(contentDisposition);<br>
+var filename = result[1];<br>
+var downloadElement = document.createElement('a');<br>
+var href = window.URL.createObjectURL(blob); //创建下载的链接<br>
+downloadElement.style.display = 'none';<br>
+downloadElement.href = href;<br>
+downloadElement.download =filename ; //下载后文件名<br>
+document.body.appendChild(downloadElement);<br>
+downloadElement.click(); //点击下载<br>
+document.body.removeChild(downloadElement); //下载完成移除元素<br>
+window.URL.revokeObjectURL(href); //释放掉blob对象<br>
+})<br>
+}<br>
+post方式的代码如下:</p>
+<p>download(){<br>
+this.$http({<br>
+method:&quot;post&quot;,<br>
+url: 接口url,<br>
+data:JSON.stringify(this.value),<br>
+responseType:'blob',<br>
+headers: {<br>
+'Content-Type': 'application/json;charset=UTF-8'    //后端ssm框架接收json类型<br>
+}<br>
+}).then((res)=&gt;{<br>
+//这里res.data是返回的blob对象<br>
+var blob = new Blob([res.data], {type: 'application/actet-stream;charset=utf-8'});<br>
+var contentDisposition = res.headers['content-disposition'];  //从response的headers中获取filename, 后端response.setHeader(&quot;Content-disposition&quot;, &quot;attachment; filename=xxxx.docx&quot;) 设置的文件名;<br>
+var patt = new RegExp(&quot;filename=([<sup>;]+\.[</sup>\.;]+);*&quot;);<br>
+var result = patt.exec(contentDisposition);<br>
+var filename = result[1];<br>
+var downloadElement = document.createElement('a');<br>
+var href = window.URL.createObjectURL(blob); //创建下载的链接<br>
+downloadElement.style.display = 'none';<br>
+downloadElement.href = href;<br>
+downloadElement.download =filename ; //下载后文件名<br>
+document.body.appendChild(downloadElement);<br>
+downloadElement.click(); //点击下载<br>
+document.body.removeChild(downloadElement); //下载完成移除元素<br>
+window.URL.revokeObjectURL(href); //释放掉blob对象<br>
+})<br>
+},</p>
+<p>另一种使用简单粗暴的方法完成下载, 直接打开新窗口, 用get方式传递参数完成下载:</p>
+<p>download(){</p>
+<pre><code>var url = 接口地址;
+
+url = url+&quot;?data=&quot;+encodeURI(JSON.stringify(this.data));  //get方式要encode一下, 后端接收参数data
+
+window.open(url);
+</code></pre>
+<p>},</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/shi-yong-gong-ju/">
+              <h3 class="post-title">
+                下一篇：实用工具
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dgulai.github.io/gridea//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

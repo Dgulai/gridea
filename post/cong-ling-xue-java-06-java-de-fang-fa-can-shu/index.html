@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>从零学Java-06 java的方法、参数 | Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dgulai.github.io/gridea//favicon.ico?v=1597495156452">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dgulai.github.io/gridea//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://dgulai.github.io/gridea/">
+        <img class="avatar" src="https://dgulai.github.io/gridea//images/avatar.png?v=1597495156452" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://dgulai.github.io/gridea/">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">从零学Java-06 java的方法、参数</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-08-15</span>
+            
+          </div>
+          <div class="post-content">
+            <h3 id="何谓方法">何谓方法？</h3>
+<ul>
+<li>
+<p>Java方法时语句的集合，它们在一起执行一个功能</p>
+<ul>
+<li>方法时解决一类问题的不走的有序组合</li>
+<li>方法包含于类或对象中</li>
+<li>方法在程序中被创建，在其他地方被引用</li>
+</ul>
+</li>
+<li>
+<p>设计方法的原则<br>
+方法的本意是功能块，就是实现某个功能的语句块的集合。我们设计方法的时候，最好保持方法的原子性，就是<strong>一个方法只完成 1 个功能</strong>，这样利于我们后期的扩展</p>
+</li>
+</ul>
+<h3 id="方法的定义">方法的定义</h3>
+<ul>
+<li>Java的方法类似于其他语言的函数，是一段用来完成特定功能的代码片段，一般情况下，定义方法包含以下语法:
+<ul>
+<li>修饰符： 修饰符，可选，告诉编辑器如何调用该方法，定义了该方法的访问类型</li>
+<li>返回值类型： 方法可能会返回值 returnValueType是方法返回值的数据类型，有些方法执行所需的操作，但没有返回值， 则returnValueType 是关键字 void</li>
+<li>方法名： 是方法的实际名称。 方法名和参数表共同构成方法签名</li>
+<li>参数类型： 参数像是一个占位符。当方法被调用的时候，传递值给参数。这个值被称为实参或变量。参数列表是指方法的参数类型 顺序 和参数的个数。 参数是可选的 方法可以不包含任何参数</li>
+<li>方法体： 方法体包含具体的语句，定义该方法的功能</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">修饰符 返回值类型 方法名(参数类型 参数名){
+    ...方法体
+    return 返回值
+}
+</code></pre>
+<h3 id="方法的重载">方法的重载</h3>
+<ul>
+<li>重载就是在一个类中，有相同的函数名称，但形参不同的函数</li>
+<li>方法重载的规则
+<ul>
+<li>方法名必须相同</li>
+<li>参数列表必须不同（个数不同 类型不同，参数排列顺序不同）</li>
+<li>方法的返回类型可以相同也可以不同</li>
+<li>仅仅返回类型不同不足以成为方法的重载</li>
+</ul>
+</li>
+<li>实现理论<br>
+方法名相同时，编译器会根据调用方法的参数个数，参数类型等去逐个匹配，以选择对应的方法，如果匹配失败则报错</li>
+</ul>
+<h3 id="命令行传参">命令行传参</h3>
+<p>通过命令行编译可以传递参数</p>
+<h3 id="可变参数不定项">可变参数（不定项）</h3>
+<ul>
+<li>JDK1.5开始 Java支持传递同类型的可变参数给一个方法</li>
+<li>在方法声明中，在指定参数类型后加一个省略号(...)</li>
+<li>一个方法中只能指定一个可变参数，它必须是方法的最后一个参数，所有普通参数必须在它之前声明</li>
+</ul>
+<h3 id="递归">递归</h3>
+<ul>
+<li>A方法调用A方法自己</li>
+<li>利用递归可以用简单的程序来解决一些复杂的问题。它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。递归的能力在于用有限的语句来定义对象的无限集合。</li>
+<li>递归结构包括两个部分
+<ul>
+<li>递归头： 递归出口，没有出口将陷入死循环</li>
+<li>递归体： 调用自身</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://dgulai.github.io/gridea/post/cong-ling-xue-java-05-java-liu-cheng-kong-zhi/">
+              <h3 class="post-title">
+                下一篇：从零学Java-05 java流程控制
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dgulai.github.io/gridea//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
